@@ -1,0 +1,28 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+
+        if len(s) != len(t):
+            return False
+
+        letters = dict()
+
+        for i in s:
+            if i in letters:
+                letters[i] += 1
+            else:
+                letters[i] = 1
+        
+        for i in t:
+            if i in letters:
+                letters[i] -= 1
+                if letters[i] == 0:
+                    del letters[i]
+            else:
+                return False
+        
+        if len(letters) > 0:
+            return False
+        else:
+            return True
+
+        
